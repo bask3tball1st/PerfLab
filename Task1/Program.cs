@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace Task1
 {
@@ -11,9 +7,36 @@ namespace Task1
     {
         static void Main(string[] args)
         {
+            try
+            {
+                string path = Environment.CurrentDirectory + "\\input.txt";
+                StreamReader input = new StreamReader(path);
+                int n = Convert.ToInt32(input.ReadLine());
+                int m = Convert.ToInt32(input.ReadLine());
+                if (n == 0 || m == 0)
+                {
+                    Console.WriteLine("Enter the correct values in the file!");
+                    input.Close();
+                    Console.WriteLine("Press any key to close...");
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("Answer: " + algorithm(n, m));
+                    input.Close();
+                    Console.WriteLine("Press any key to close...");
+                    Console.ReadLine();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        static string algorithm(int n, int m)
+        {
             string result = "";
-            int n = Convert.ToInt32(Console.ReadLine());
-            int m = Convert.ToInt32(Console.ReadLine());
             int tempPos = 1;
             while ((tempPos + (m - 1)) % n != 1)
             {
@@ -26,15 +49,7 @@ namespace Task1
                 }
             }
             result += tempPos;
-            Console.WriteLine(result);
-            //string path = "D:/Skillbox/Task1/Task1/input.txt";
-            //StreamReader input = new StreamReader(path);
-            //string line = input.ReadLine();
-            //foreach (var i in line.Split())
-            //{
-            //    Console.WriteLine(i);
-            //}
-            Console.ReadLine();
+            return result;
         }
     }
 }
