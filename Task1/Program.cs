@@ -3,17 +3,26 @@ using System.IO;
 
 namespace Task1
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
             try
             {
-                string path = Environment.CurrentDirectory + "\\input.txt";
+                string path = Environment.CurrentDirectory + "/input.txt";
+                // Ввод через пробел
+                //StreamReader input = new StreamReader(path);
+                //string line = input.ReadToEnd();
+                //string[] nums = line.Split(' ');
+                //int n = Convert.ToInt32(nums[0]);
+                //int m = Convert.ToInt32(nums[1]);
+
+                // Ввод через символ \n
                 StreamReader input = new StreamReader(path);
                 int n = Convert.ToInt32(input.ReadLine());
                 int m = Convert.ToInt32(input.ReadLine());
-                if (n == 0 || m == 0)
+
+                if (n <= 0 || m <= 0)
                 {
                     Console.WriteLine("Enter the correct values in the file!");
                     input.Close();
