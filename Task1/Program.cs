@@ -21,6 +21,7 @@ namespace Task1
                 StreamReader input = new StreamReader(path);
                 int n = Convert.ToInt32(input.ReadLine());
                 int m = Convert.ToInt32(input.ReadLine());
+                input.Close();
 
                 if (n <= 0 || m <= 0)
                 {
